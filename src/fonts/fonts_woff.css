@@ -1,13 +1,73 @@
 @font-face {
-  font-family: 'Open Sans_my';
-  src: url('opensans.woff') format('woff');
-  font-weight: normal;
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-Light.woff') format('woff');
+  font-weight: 300;
   font-style: normal;
+}
+@font-face {
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Merriweather_circle';
+  src: url('Merriweather-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
 }
 
 @font-face {
-  font-family: 'Open Sans_my';
-  src: url('opensans_bold.woff') format('woff');
-  font-weight: bold;
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-Light.woff') format('woff');
+  font-weight: 300;
   font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik_kubik';
+  src: url('Rubik-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
 }

@@ -50,7 +50,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('fonts:copy', function() {
-  return gulp.src(dirs.source + '/fonts/*.{woff,ttf,woff2}')
+  return gulp.src(dirs.source + '/fonts/**/*.{woff,ttf,woff2}')
     .pipe(gulp.dest(dirs.build + '/fonts/'))
     .pipe(browserSync.stream());
 });
@@ -58,6 +58,12 @@ gulp.task('fonts:copy', function() {
 gulp.task('css:copy', function() {
   return gulp.src(dirs.source + '/css/*.css')
     .pipe(gulp.dest(dirs.build + '/css/'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('img:copy', function() {
+  return gulp.src(dirs.source + '/img/*.{jpg,png}')
+    .pipe(gulp.dest(dirs.build + '/img/'))
     .pipe(browserSync.stream());
 });
 
@@ -105,6 +111,14 @@ gulp.task('js', function () {
     .pipe(gulp.dest(dirs.build + '/js'));
 });
 
+gulp.task('js:font:loading:LS:min', function () {
+  return gulp.src(dirs.source + '/fonts/font_loading.js')
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(rename('font_loading.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(dirs.source + '/fonts/'));
+});
+
 gulp.task('css:fonts:woff', function (callback) {
   let fontsCssPath = [
     dirs.source + '/fonts/fonts_woff.css',
@@ -118,14 +132,15 @@ gulp.task('css:fonts:woff', function (callback) {
   if(filesExists) {
     return gulp.src(fontsCssPath)
       .pipe(plumber({ errorHandler: onError }))
-      .pipe(base64({                   // ищем в CSS файле подключения сторонних ресурсов, чтоб закодировать base64 и вставить прямо в файл
+      .pipe(base64({
         // baseDir: '/',
-        extensions: ['woff'],         // только указанного тут формата ресурсов
-        maxImageSize: 1024*1024,      // максимальный размер в байтах
-        deleteAfterEncoding: false,   // не удаляем исходный ресурс после работы!
+        extensions: ['woff'],
+        maxImageSize: 1024*1024,
+        deleteAfterEncoding: false,
         // debug: true
       }))
-      .pipe(gulp.dest(dirs.build + '/css')); // пишем в папку билда, именно оттуда сей файл будет стягиваться JS-ом
+      .pipe(cleanCSS())
+      .pipe(gulp.dest(dirs.build + '/css'));
   }
   else {
     console.log('Файла WOFF, из которого генерируется CSS с base64-кодированным шрифтом, нет');
@@ -147,15 +162,16 @@ gulp.task('css:fonts:woff2', function (callback) {
   if(filesExists) {
     return gulp.src(fontsCssPath)
       .pipe(plumber({ errorHandler: onError }))
-      .pipe(base64({                   // ищем в CSS файле подключения сторонних ресурсов, чтоб закодировать base64 и вставить прямо в файл
+      .pipe(base64({
         // baseDir: '/',
-        extensions: ['woff2'],         // только указанного тут формата ресурсов
-        maxImageSize: 1024*1024,       // максимальный размер в байтах
-        deleteAfterEncoding: false,    // не удаляем исходный ресурс после работы!
+        extensions: ['woff2'],
+        maxImageSize: 1024*1024,
+        deleteAfterEncoding: false,
         // debug: true
       }))
       .pipe(replace('application/octet-stream;', 'application/font-woff2;')) // костыль, ибо mime плагин для woff2 определяет некорректно
-      .pipe(gulp.dest(dirs.build + '/css')); // пишем в папку билда, именно оттуда сей файл будет стягиваться JS-ом
+      .pipe(cleanCSS())
+      .pipe(gulp.dest(dirs.build + '/css'));
   }
   else {
     console.log('Файла WOFF2, из которого генерируется CSS с base64-кодированным шрифтом, нет');
@@ -167,7 +183,7 @@ gulp.task('css:fonts:woff2', function (callback) {
 gulp.task('build', gulp.series(
   'clean',
   'svgstore',
-  gulp.parallel('less', 'js', 'css:copy', 'fonts:copy'),
+  gulp.parallel('less', 'js', 'img:copy', 'css:copy', 'fonts:copy', 'js:font:loading:LS:min', 'css:fonts:woff', 'css:fonts:woff2'),
   'html'
 ));
 
@@ -182,7 +198,7 @@ gulp.task('serve', gulp.series('build', function() {
 
   gulp.watch(
     [
-      dirs.source + '/*.html',
+      dirs.source + '/**/*.html',
     ],
     gulp.series('html', reloader)
   );

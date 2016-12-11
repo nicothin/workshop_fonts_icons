@@ -3,26 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кеширование в LS</title>
+  <title>Кеширование в CSS (CSS сразу в коде страницы, WOFF)</title>
 
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/fonts-for-elements.css">
 
-  <script>@@include('fonts/font_loading.min.js')</script>
-  <script>
-    loadFont(
-      'My fonts',
-      '/css/fonts_woff.css?v=1',
-      '/css/fonts_woff2.css?v=1'
-    );
-  </script>
+  <style>@@include('../docs/css/fonts_woff.css')</style>
 
 </head>
 <body>
 
   @@include('_include/nav.html')
 
-  <p class="descr">Кешрирование в localStorage CSS-строки с base64-кодированными шрифтами (woff или woff2, в зависимости от поддержки браузером)</p>
+  <p class="descr">Кеширование в CSS (CSS сразу в коде страницы, WOFF)</p>
 
   <h1>Тестовый стенд</h1>
 

@@ -9,6 +9,8 @@ function loadFont(fontName, woffUrl, woff2Url) {
     return;
   }
 
+  console.log('выход не произошел');
+
   // 1. Настраиваем localStorage
   var loSto = {};
   try {
@@ -37,7 +39,13 @@ function loadFont(fontName, woffUrl, woff2Url) {
 
     // 4. Применяем стили шрифта.
     styleElement.textContent = storedFontCss;
+
+    console.log('шрифт в LS');
+
   } else {
+
+    console.log('шрифт НЕ в LS');
+
     // Данных нет, или они загружены с устаревшего URL,
     // поэтому мы должны загрузить их снова.
 
@@ -52,6 +60,9 @@ function loadFont(fontName, woffUrl, woff2Url) {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         // 7. Обновляем localStorage новыми данными и применяем стили шрифта.
+
+        console.log('шрифт получен с сервера');
+
         loSto[localStorageUrlKey] = url;
         loSto[localStorageCssKey] = styleElement.textContent = request.responseText;
       }

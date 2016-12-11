@@ -3,26 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кеширование в LS</title>
+  <title>Подключение с fonts.google.com (Web Font Loader)</title>
 
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/fonts-for-elements.css">
 
-  <script>@@include('fonts/font_loading.min.js')</script>
+  <!-- https://github.com/typekit/webfontloader -->
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
   <script>
-    loadFont(
-      'My fonts',
-      '/css/fonts_woff.css?v=1',
-      '/css/fonts_woff2.css?v=1'
-    );
+    WebFont.load({
+      google: {
+        families: ['Rubik', 'Merriweather']
+      }
+    });
   </script>
+
+  <style>
+  body,
+  .demo-table {
+    font-family: 'Rubik', sans-serif;
+  }
+
+  h1, h2,h3,h4,h5,h6,
+  .demo-table--serif {
+    font-family: 'Merriweather', serif;
+  }
+  </style>
 
 </head>
 <body>
 
-  @@include('_include/nav.html')
+  <nav class="main-nav">
+    <ol class="main-nav__list">
+      <li><a href="index.html">@font-face</a></li>
+      <li><a href="index_from-google.html">Подключение с fonts.google.com</a></li>
+      <li><a href="index_from-google_2.html">Подключение с fonts.google.com (опт. набор символов)</a></li>
+      <li><a href="index_from-google_3.html">Подключение с fonts.google.com (Web Font Loader)</a></li>
+      <li><a href="index_font-css.html">Шрифты в CSS (отдельный файл c WOFF)</a></li>
+      <li><a href="index_font-css2.html">Шрифты в CSS (отдельный файл c WOFF2)</a></li>
+      <li><a href="index_font-css_include.html">Шрифты в CSS вставлены в разметку</a></li>
+      <li><a href="index_font-base64-ls.html">Кеширование в LS</a></li>
+      <li><a href="index_font-face-observer.html">Подключение c Font Face Observer</a></li>
+      <li><a href=""></a></li>
+    </ol>
+  </nav>
 
-  <p class="descr">Кешрирование в localStorage CSS-строки с base64-кодированными шрифтами (woff или woff2, в зависимости от поддержки браузером)</p>
+
+  <p class="descr">Подключение с fonts.google.com (Web Font Loader). Внимание на CSS-классы, добавляемые к <code>html</code></p>
 
   <h1>Тестовый стенд</h1>
 
@@ -35,7 +61,63 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
   <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
 
-  @@include('_include/demo-table.html')
+  <p>!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™</p>
+  <table class="demo-table">
+    <tr>
+      <th>Что</th>
+      <th>Как</th>
+    </tr>
+    <tr>
+      <td><span class="safe-text">light</span></td>
+      <td>
+        <span class="weight-300">Лёгкий текст. Light text.</span><br>
+        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">regular</span></td>
+      <td>
+        <span class="weight-400">Нормальный текст. Regular text.</span><br>
+        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">bold</span></td>
+      <td>
+        <span class="weight-700">Полужирный текст. Bold text.</span><br>
+        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
+      </td>
+    </tr>
+  </table>
+
+  <table class="demo-table  demo-table--serif">
+    <tr>
+      <th>Что</th>
+      <th>Как</th>
+    </tr>
+    <tr>
+      <td><span class="safe-text">light</span></td>
+      <td>
+        <span class="weight-300">Лёгкий текст. Light text.</span><br>
+        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">regular</span></td>
+      <td>
+        <span class="weight-400">Нормальный текст. Regular text.</span><br>
+        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">bold</span></td>
+      <td>
+        <span class="weight-700">Полужирный текст. Bold text.</span><br>
+        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
+      </td>
+    </tr>
+  </table>
+
 
   <p>Снова мир всемогущая, языком великий заголовок запятой его власти, рыбного последний текст, текста безорфографичный обеспечивает оксмокс.</p>
   <p>Ratione voluptates praesentium, earum quisquam. Animi dolorum enim quidem quae fugiat porro voluptate dolorem repellat accusantium.</p>

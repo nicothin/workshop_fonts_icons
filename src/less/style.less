@@ -1,8 +1,43 @@
+@serif:         Merriweather_circle, Georgia, serif;
+@sans-serif:    Rubik_kubik, Arial, sans-serif;
+
+
+
+html {
+  background: #eee;
+}
+
 body {
-  margin: 0;
+  margin: 0 auto;
+  width: 90%;
+  background: #fff;
   padding: 1em;
-  font-size: 24px;
+  font-size: 16px;
   line-height: 1.3;
+}
+
+h1, h2,h3,h4,h5,h6 {
+  font-family: serif;
+}
+
+.main-nav {
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    // list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    a {
+      white-space: nowrap;
+    }
+  }
 }
 
 .descr {
@@ -10,4 +45,54 @@ body {
   padding: 1em;
   border: 0.1em solid #ddd;
   border-radius: 0.5em;
+}
+
+.safe-text {
+  font-family: sans-serif;
+}
+
+.demo-image {
+  float: right;
+  margin: 0 0 1em 1em;
+  width: 168px;
+}
+
+.demo-table {
+  font-family: sans-serif;
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border: 1px solid #000;
+
+  th,
+  td {
+    padding: 0.2em 0.7em;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+  }
+
+  td:first-child {
+    width: 100px;
+  }
+
+  &--serif {
+    font-family: serif;
+  }
+}
+
+.weight-300 {
+  font-weight: 300;
+}
+
+.weight-400 {
+  font-weight: 400;
+}
+
+.weight-700 {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
 }

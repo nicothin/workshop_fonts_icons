@@ -1,0 +1,9 @@
+body,
+.demo-table {
+  font-family: Rubik_kubik, Arial, sans-serif;
+}
+
+h1, h2,h3,h4,h5,h6,
+.demo-table--serif {
+  font-family: Merriweather_circle, Georgia, serif;
+}
