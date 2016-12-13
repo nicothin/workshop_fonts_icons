@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: 'Merriweather_circle';
   src: url('Merriweather-Light.woff2') format('woff2');
   font-weight: 300;
@@ -21,14 +21,14 @@
   src: url('Merriweather-italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
-}
+}*/
 @font-face {
   font-family: 'Merriweather_circle';
   src: url('Merriweather-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
-@font-face {
+/*@font-face {
   font-family: 'Merriweather_circle';
   src: url('Merriweather-BoldItalic.woff2') format('woff2');
   font-weight: 700;
@@ -46,14 +46,14 @@
   src: url('Rubik-LightItalic.woff2') format('woff2');
   font-weight: 300;
   font-style: italic;
-}
+}*/
 @font-face {
   font-family: 'Rubik_kubik';
   src: url('Rubik-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
-@font-face {
+/*@font-face {
   font-family: 'Rubik_kubik';
   src: url('Rubik-italic.woff2') format('woff2');
   font-weight: 400;
@@ -70,4 +70,4 @@
   src: url('Rubik-BoldItalic.woff2') format('woff2');
   font-weight: 700;
   font-style: italic;
-}
+}*/

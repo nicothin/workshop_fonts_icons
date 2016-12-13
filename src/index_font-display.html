@@ -3,36 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Подключение c Font Face Observer </title>
+  <title>Простое подключение</title>
 
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/font-connect-beginner-style.css">
+  <link rel="stylesheet" href="css/font-connect-font-display.css">
 
 </head>
 <body>
 
-  <nav class="main-nav">
-    <ol class="main-nav__list">
-      <li><a href="index_from-google.html">Подключение с fonts.google.com</a></li>
-      <li><a href="index_from-google_2.html">Подключение с fonts.google.com (опт. набор символов)</a></li>
-      <li><a href="index.html">@font-face</a></li>
-      <li><a href="index_font-display.html">@font-face с font-display</a></li>
-      <li><a href="index_preload.html">@font-face и Preload</a></li>
-      <li><a href="index_font-css.html">Шрифты в CSS (отдельный файл c WOFF)</a></li>
-      <li><a href="index_font-css2.html">Шрифты в CSS (отдельный файл c WOFF2)</a></li>
-      <li><a href="index_font-css_include.html">Шрифты в CSS вставлены в разметку</a></li>
+  @@include('_include/nav.html')
 
-      <li><a href="index_from-google_3.html">Web Font Loader (шрифты с fonts.google.com)</a></li>
-      <li><a href="index_webfontloader-local.html">Web Font Loader (локальные файлы шрифта)</a></li>
-      <li><a href="index_font-base64-ls.html">Кеширование в LS</a></li>
-      <li><a href="index_font-face-observer.html">Подключение c Font Face Observer</a></li>
-      <li><a href=""></a></li>
-    </ol>
-    <a href="https://github.com/nicothin/workshop_fonts_icons">Репозиторий</a>, <a href="https://nicothin.github.io/workshop_fonts_icons/">демка на github</a>
-  </nav>
-
-
-  <p class="descr">Подключение c Font Face Observer</p>
+  <p class="descr">Подключение шрифта <code>@font-face</code> с указанием <code>font-display</code></p>
 
   <h1>Тестовый стенд</h1>
 
@@ -45,63 +26,7 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
   <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
 
-  <p>!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™</p>
-  <table class="demo-table">
-    <tr>
-      <th>Что</th>
-      <th>Как</th>
-    </tr>
-    <tr>
-      <td><span class="safe-text">light</span></td>
-      <td>
-        <span class="weight-300">Лёгкий текст. Light text.</span><br>
-        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
-      </td>
-    </tr>
-    <tr>
-      <td><span class="safe-text">regular</span></td>
-      <td>
-        <span class="weight-400">Нормальный текст. Regular text.</span><br>
-        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
-      </td>
-    </tr>
-    <tr>
-      <td><span class="safe-text">bold</span></td>
-      <td>
-        <span class="weight-700">Полужирный текст. Bold text.</span><br>
-        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
-      </td>
-    </tr>
-  </table>
-
-  <table class="demo-table  demo-table--serif">
-    <tr>
-      <th>Что</th>
-      <th>Как</th>
-    </tr>
-    <tr>
-      <td><span class="safe-text">light</span></td>
-      <td>
-        <span class="weight-300">Лёгкий текст. Light text.</span><br>
-        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
-      </td>
-    </tr>
-    <tr>
-      <td><span class="safe-text">regular</span></td>
-      <td>
-        <span class="weight-400">Нормальный текст. Regular text.</span><br>
-        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
-      </td>
-    </tr>
-    <tr>
-      <td><span class="safe-text">bold</span></td>
-      <td>
-        <span class="weight-700">Полужирный текст. Bold text.</span><br>
-        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
-      </td>
-    </tr>
-  </table>
-
+  @@include('_include/demo-table.html')
 
   <p>Снова мир всемогущая, языком великий заголовок запятой его власти, рыбного последний текст, текста безорфографичный обеспечивает оксмокс.</p>
   <p>Ratione voluptates praesentium, earum quisquam. Animi dolorum enim quidem quae fugiat porro voluptate dolorem repellat accusantium.</p>
