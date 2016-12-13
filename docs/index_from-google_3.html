@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Подключение с fonts.google.com (Web Font Loader)</title>
+  <title>Web Font Loader (шрифты с fonts.google.com)</title>
 
   <link rel="stylesheet" href="css/style.min.css">
 
@@ -12,8 +12,10 @@
   <script>
     WebFont.load({
       google: {
-        families: ['Rubik', 'Merriweather']
-      }
+        families: ['Rubik:300,300i,400,400i,700,700i', 'Merriweather:300,300i,400,400i,700,700i'],
+        text: ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™'
+      },
+      timeout: 2000
     });
   </script>
 
@@ -37,7 +39,8 @@
       <li><a href="index.html">@font-face</a></li>
       <li><a href="index_from-google.html">Подключение с fonts.google.com</a></li>
       <li><a href="index_from-google_2.html">Подключение с fonts.google.com (опт. набор символов)</a></li>
-      <li><a href="index_from-google_3.html">Подключение с fonts.google.com (Web Font Loader)</a></li>
+      <li><a href="index_from-google_3.html">Web Font Loader (шрифты с fonts.google.com)</a></li>
+      <li><a href="index_webfontloader-local.html">Web Font Loader (локальные файлы шрифта)</a></li>
       <li><a href="index_font-css.html">Шрифты в CSS (отдельный файл c WOFF)</a></li>
       <li><a href="index_font-css2.html">Шрифты в CSS (отдельный файл c WOFF2)</a></li>
       <li><a href="index_font-css_include.html">Шрифты в CSS вставлены в разметку</a></li>
@@ -48,7 +51,7 @@
   </nav>
 
 
-  <p class="descr">Подключение с fonts.google.com (Web Font Loader). Внимание на CSS-классы, добавляемые к <code>html</code></p>
+  <p class="descr">Web Font Loader (шрифты с fonts.google.com). Внимание на CSS-классы, добавляемые к <code>html</code></p>
 
   <h1>Тестовый стенд</h1>
 
