@@ -24,9 +24,9 @@
 }
 @font-face {
   font-family: 'Merriweather_circle';
-  src: url('../fonts/Merriweather-italic.woff2') format('woff2'),
-       url('../fonts/Merriweather-italic.woff') format('woff'),
-       url('../fonts/Merriweather-italic.ttf') format('truetype');
+  src: url('../fonts/Merriweather-Italic.woff2') format('woff2'),
+       url('../fonts/Merriweather-Italic.woff') format('woff'),
+       url('../fonts/Merriweather-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
@@ -73,9 +73,9 @@
 }
 @font-face {
   font-family: 'Rubik_kubik';
-  src: url('../fonts/Rubik-italic.woff2') format('woff2'),
-       url('../fonts/Rubik-italic.woff') format('woff'),
-       url('../fonts/Rubik-italic.ttf') format('truetype');
+  src: url('../fonts/Rubik-Italic.woff2') format('woff2'),
+       url('../fonts/Rubik-Italic.woff') format('woff'),
+       url('../fonts/Rubik-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
