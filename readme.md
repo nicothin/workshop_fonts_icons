@@ -1,4 +1,4 @@
-# Тест шрифтов и иконок [демка](https://github.com/nicothin/workshop_fonts_icons)
+# Тест шрифтов и иконок [демка](https://nicothin.github.io/workshop_fonts_icons/)
 
 **ВНИМАНИЕ!** Не клонировать! Форкните себе этот репозиторий и клонируйте свой форк!
 
