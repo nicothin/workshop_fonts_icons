@@ -7,9 +7,7 @@ function loadFont(fontName, woffUrl, woff2Url) {
 
   if (noSupport) {
     return;
-  }
-
-  console.log('выход не произошел');
+  };
 
   // 1. Настраиваем localStorage
   var loSto = {};
@@ -40,7 +38,7 @@ function loadFont(fontName, woffUrl, woff2Url) {
     // 4. Применяем стили шрифта.
     styleElement.textContent = storedFontCss;
 
-    console.log('шрифт в LS');
+    console.log('шрифт в LS, сейчас будем загружать');
 
   } else {
 
