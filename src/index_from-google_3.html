@@ -6,30 +6,44 @@
   <title>Web Font Loader (шрифты с fonts.google.com)</title>
 
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/font-webfontloader.css">
 
   <!-- https://github.com/typekit/webfontloader -->
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script> -->
   <script>
-    WebFont.load({
+    // Конфигурируем
+    WebFontConfig = {
       google: {
         families: ['Rubik:300,300i,400,400i,700,700i', 'Merriweather:300,300i,400,400i,700,700i'],
         text: ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™'
       },
-      timeout: 2000
-    });
+      timeout: 2000,
+      loading: function() {console.log('загрузка');},
+      active: function() {
+        console.log('активность');
+        sessionStorage.fontsGoogleLoaded = true;
+      },
+      inactive: function() {console.log('неактивность');},
+      fontloading: function(familyName, fvd) {console.log('загрузка '+familyName);},
+      fontactive: function(familyName, fvd) {console.log('активность '+familyName);},
+      fontinactive: function(familyName, fvd) {console.log('неактивность '+familyName);}
+    };
+    // Получим скрипт асинхронно
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+    })(document);
+    // Проверим флаг, вероятно, шрифты уже в кеше браузера
+    (function() {
+      if (sessionStorage.fontsGoogleLoaded) {
+        console.log('Метка есть, в рамках сессии шрифты загружались, добавляем классы активности сразу');
+        document.documentElement.classList.add('wf-merriweathercircle-n7-active', 'wf-rubikkubik-n4-active');
+      } else {
+        console.log('Метки загрузки шрифтов еще нет, ЩАЗ БУДИМ ЗАГРУЗИТЬ.');
+      }
+    })();
   </script>
-
-  <style>
-  body,
-  .demo-table {
-    font-family: 'Rubik', sans-serif;
-  }
-
-  h1, h2,h3,h4,h5,h6,
-  .demo-table--serif {
-    font-family: 'Merriweather', serif;
-  }
-  </style>
 
 </head>
 <body>

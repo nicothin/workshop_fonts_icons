@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="css/font-webfontloader.css">
 
   <!-- https://github.com/typekit/webfontloader -->
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script> -->
   <script>
-    WebFont.load({
+    // Конфигурируем
+    WebFontConfig = {
       custom: {
         // families: ['Merriweather_circle', 'Rubik_kubik'],
-        families: ['Merriweather_circle:n3,i3,n4,i4,n7,i7', 'Rubik_kubik:n3,i3,n4,i4,n7,i7'],
+        families: ['Merriweather_circle:n7', 'Rubik_kubik:n4'],
         urls: ['css/font-face-only.css']
       },
       timeout: 2000,
@@ -27,11 +28,17 @@
       fontloading: function(familyName, fvd) {console.log('загрузка '+familyName);},
       fontactive: function(familyName, fvd) {console.log('активность '+familyName);},
       fontinactive: function(familyName, fvd) {console.log('неактивность '+familyName);}
-    });
-    // Если шрифты уже загружались (должны быть в кеше браузера)
+    };
+    // Получим скрипт асинхронно
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+    })(document);
+    // Проверим флаг, вероятно, шрифты уже в кеше браузера
     (function() {
       if (sessionStorage.fontsLoaded) {
-        console.log('В рамках сессии шрифты загружались, добавляем класс активности сразу');
+        console.log('Метка есть, в рамках сессии шрифты загружались, добавляем классы активности сразу');
         document.documentElement.classList.add('wf-merriweathercircle-n7-active', 'wf-rubikkubik-n4-active');
       } else {
         console.log('Метки загрузки шрифтов еще нет, ЩАЗ БУДИМ ЗАГРУЗИТЬ.');
