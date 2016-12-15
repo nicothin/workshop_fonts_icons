@@ -1,0 +1,30 @@
+body,
+.demo-table {
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.demo-table--serif {
+  font-family: Georgia, serif;
+}
+
+
+.wf-active body,
+.wf-active .demo-table {
+  font-family: Rubik_kubik, Arial, sans-serif;
+}
+
+.wf-active h1,
+.wf-active h2,
+.wf-active h3,
+.wf-active h4,
+.wf-active h5,
+.wf-active h6,
+.wf-active .demo-table--serif {
+  font-family: Merriweather_circle, Georgia, serif;
+}
