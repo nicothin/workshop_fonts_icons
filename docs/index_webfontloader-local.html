@@ -13,8 +13,8 @@
   <script>
     WebFont.load({
       custom: {
-        families: ['Merriweather_circle', 'Rubik_kubik'],
-        // families: ['Merriweather_circle:n3,i3,n4,i4,n7,i7', 'Rubik_kubik:n3,i3,n4,i4,n7,i7'],
+        // families: ['Merriweather_circle', 'Rubik_kubik'],
+        families: ['Merriweather_circle:n3,i3,n4,i4,n7,i7', 'Rubik_kubik:n3,i3,n4,i4,n7,i7'],
         urls: ['css/font-face-only.css']
       },
       timeout: 2000,
@@ -32,9 +32,9 @@
     (function() {
       if (sessionStorage.fontsLoaded) {
         console.log('В рамках сессии шрифты загружались, добавляем класс активности сразу');
-        document.documentElement.classList.add('wf-active');
+        document.documentElement.classList.add('wf-merriweathercircle-n7-active', 'wf-rubikkubik-n4-active');
       } else {
-        console.log('Метки загрузки шрифтов еще нет, ЩАЗС БУДЕМ ЗГУСИТЬ.');
+        console.log('Метки загрузки шрифтов еще нет, ЩАЗ БУДИМ ЗАГРУЗИТЬ.');
       }
     })();
   </script>

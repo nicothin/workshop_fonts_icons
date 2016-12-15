@@ -14,17 +14,18 @@ h6,
 }
 
 
-.wf-active body,
-.wf-active .demo-table {
+.wf-rubikkubik-n4-active body,
+.wf-rubikkubik-n4-active .demo-table {
   font-family: Rubik_kubik, Arial, sans-serif;
 }
 
-.wf-active h1,
-.wf-active h2,
-.wf-active h3,
-.wf-active h4,
-.wf-active h5,
-.wf-active h6,
-.wf-active .demo-table--serif {
+.wf-merriweathercircle-n7-active h1,
+.wf-merriweathercircle-n7-active h2,
+.wf-merriweathercircle-n7-active h3,
+.wf-merriweathercircle-n7-active h4,
+.wf-merriweathercircle-n7-active h5,
+.wf-merriweathercircle-n7-active h6,
+.wf-merriweathercircle-n7-active .demo-table--serif {
   font-family: Merriweather_circle, Georgia, serif;
+  font-weight: 700;
 }
