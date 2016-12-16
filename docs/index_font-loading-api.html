@@ -3,21 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Font Loader (шрифты с fonts.google.com)</title>
+  <title>Подключение c Font Face Observer </title>
 
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/font-webfontloader-google.css">
+  <link rel="stylesheet" href="css/font-face-only.css">
+  <link rel="stylesheet" href="css/font-fontfaceobserver.css">
 
-  <!-- https://github.com/typekit/webfontloader -->
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
   <script>
-    WebFont.load({
-      google: {
-        families: ['Rubik:300,300i,400,400i,700,700i', 'Merriweather:300,300i,400,400i,700,700i'],
-        text: ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™'
-      },
-      timeout: 2000
+  (function() {
+
+    var html = document.documentElement;
+    html.className += " base-fonts-loading";
+
+    window.setTimeout(function() {
+      html.classList.remove('base-fonts-loading');
+      console.log('Таймер на случай неподгрузки/неподдержки истек. Убираем класс сокрытия');
+    }, 3000);
+
+    // CSS Font Loading API
+    Promise.all([
+      document.fonts.load("400 1em Rubik_kubik"),
+      document.fonts.load("700 1em Merriweather_circle")
+    ]).then(function () {
+      html.classList.remove('base-fonts-loading');
+      html.classList.add('base-fonts-loaded');
+      console.log('Базовые шрифты загружены: убираем класс сокрытия, добавляем класс загруженности и поднимаем флаг');
     });
+
+  })();
   </script>
 
 </head>
@@ -44,7 +57,7 @@
   </nav>
 
 
-  <p class="descr">Web Font Loader (шрифты с fonts.google.com). Внимание на CSS-классы, добавляемые к <code>html</code></p>
+  <p class="descr">CSS Font Loading API (два базовых шрифта, совместная проверка, FOIT)</p>
 
   <h1>Тестовый стенд</h1>
 

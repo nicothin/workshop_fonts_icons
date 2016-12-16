@@ -1,0 +1,31 @@
+body,
+.demo-table {
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.demo-table--serif {
+  font-family: Georgia, serif;
+}
+
+
+.wf-rubik-n4-active body,
+.wf-rubik-n4-active .demo-table {
+  font-family: Rubik, Arial, sans-serif;
+}
+
+.wf-merriweather-n7-active h1,
+.wf-merriweather-n7-active h2,
+.wf-merriweather-n7-active h3,
+.wf-merriweather-n7-active h4,
+.wf-merriweather-n7-active h5,
+.wf-merriweather-n7-active h6,
+.wf-merriweather-n7-active .demo-table--serif {
+  font-family: Merriweather, Georgia, serif;
+  font-weight: 700;
+}

@@ -13,7 +13,7 @@
   (function() {
 
     // Если полнят флаг загруженности шрифтов
-    if( sessionStorage.ffoBaseFontsLoaded ) {
+    if( sessionStorage.ffoBaseFontsLoadedFOIT ) {
       document.documentElement.className += " base-fonts-loaded";
       console.log('Найден флаг наличия шрифтов в кеше, просто добавляем класс.');
       return;
@@ -26,16 +26,10 @@
     var MerriweatherBold = new FontFaceObserver('Merriweather_circle', { weight: 700 });
     var Rubik = new FontFaceObserver('Rubik_kubik', { weight: 400 });
 
-    // Следим за загрузкой (стандартный вариант)
-    // Promise.all([
-    //   MerriweatherBold.load(),
-    //   Rubik.load(),
-    // ]).then(function () {
-    //   document.documentElement.className += " base-fonts-loaded";
-    //   console.log('Базовые шрифты загружены, добавляем класс и поднимаем флаг');
-    //   // Поднимаем флаг загруженности
-    //   sessionStorage.ffoBaseFontsLoaded = true;
-    // });
+    // Добавляем класс, который спрячет контент
+    var html = document.documentElement;
+    html.classList.add('base-fonts-loading');
+    console.log('Добавляем класс для сокрытия текста/контента');
 
     // Следим за загрузкой с таймером прерывания
     Promise.race([
@@ -43,12 +37,14 @@
       MerriweatherBold.load(),
       Rubik.load(),
     ]).then(function () {
-      document.documentElement.className += " base-fonts-loaded";
-      console.log('Базовые шрифты загружены, добавляем класс и поднимаем флаг');
-      // Поднимаем флаг загруженности
-      sessionStorage.ffoBaseFontsLoaded = true;
+      html.classList.remove('base-fonts-loading');
+      html.classList.add('base-fonts-loaded');
+      console.log('Базовые шрифты загружены: убираем класс сокрытия, добавляем класс загруженности и поднимаем флаг');
+      sessionStorage.ffoBaseFontsLoadedFOIT = true;
     }).catch(function () {
-      console.log('Время на загрузку истекло, загрузка прервана');
+      html.classList.remove('base-fonts-loading');
+      html.classList.add('base-fonts-fail'); // не обязательно, сейчас не используется
+      console.log('Время на загрузку истекло, загрузка прервана. Убираем класс сокрытия');
     });
 
     // Таймер, прерывающий загрузку
@@ -66,7 +62,7 @@
 
   @@include('_include/nav.html')
 
-  <p class="descr">Подключение c Font Face Observer (два базовых шрифта, совместная проверка, FOUT)</p>
+  <p class="descr">Подключение c Font Face Observer (два базовых шрифта, совместная проверка, FIOT)</p>
 
   <h1>Тестовый стенд</h1>
 

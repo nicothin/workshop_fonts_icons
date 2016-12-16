@@ -1,0 +1,50 @@
+body,
+.demo-table {
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.demo-table--serif {
+  font-family: Georgia, serif;
+}
+
+.base-fonts-loaded body {
+  transition: opacity 0.5s;
+}
+
+.base-fonts-loaded body,
+.base-fonts-loaded .demo-table {
+  font-family: Rubik_kubik, Arial, sans-serif;
+}
+
+.base-fonts-loaded h1,
+.base-fonts-loaded h2,
+.base-fonts-loaded h3,
+.base-fonts-loaded h4,
+.base-fonts-loaded h5,
+.base-fonts-loaded h6,
+.base-fonts-loaded .demo-table--serif {
+  font-family: Merriweather_circle, Georgia, serif;
+  font-weight: 700;
+}
+
+
+.base-fonts-loading body,
+.base-fonts-loading .demo-table {
+  opacity: 0;
+}
+
+.base-fonts-loading h1,
+.base-fonts-loading h2,
+.base-fonts-loading h3,
+.base-fonts-loading h4,
+.base-fonts-loading h5,
+.base-fonts-loading h6,
+.base-fonts-loading .demo-table--serif {
+  opacity: 0;
+}

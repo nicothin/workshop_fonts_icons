@@ -13,7 +13,7 @@
   (function() {
 
     // Если полнят флаг загруженности шрифтов
-    if( sessionStorage.ffoBaseFontsLoaded ) {
+    if( sessionStorage.ffoBaseFontsLoadedFOIT ) {
       document.documentElement.className += " base-fonts-loaded";
       console.log('Найден флаг наличия шрифтов в кеше, просто добавляем класс.');
       return;
@@ -26,16 +26,10 @@
     var MerriweatherBold = new FontFaceObserver('Merriweather_circle', { weight: 700 });
     var Rubik = new FontFaceObserver('Rubik_kubik', { weight: 400 });
 
-    // Следим за загрузкой (стандартный вариант)
-    // Promise.all([
-    //   MerriweatherBold.load(),
-    //   Rubik.load(),
-    // ]).then(function () {
-    //   document.documentElement.className += " base-fonts-loaded";
-    //   console.log('Базовые шрифты загружены, добавляем класс и поднимаем флаг');
-    //   // Поднимаем флаг загруженности
-    //   sessionStorage.ffoBaseFontsLoaded = true;
-    // });
+    // Добавляем класс, который спрячет контент
+    var html = document.documentElement;
+    html.classList.add('base-fonts-loading');
+    console.log('Добавляем класс для сокрытия текста/контента');
 
     // Следим за загрузкой с таймером прерывания
     Promise.race([
@@ -43,12 +37,14 @@
       MerriweatherBold.load(),
       Rubik.load(),
     ]).then(function () {
-      document.documentElement.className += " base-fonts-loaded";
-      console.log('Базовые шрифты загружены, добавляем класс и поднимаем флаг');
-      // Поднимаем флаг загруженности
-      sessionStorage.ffoBaseFontsLoaded = true;
+      html.classList.remove('base-fonts-loading');
+      html.classList.add('base-fonts-loaded');
+      console.log('Базовые шрифты загружены: убираем класс сокрытия, добавляем класс загруженности и поднимаем флаг');
+      sessionStorage.ffoBaseFontsLoadedFOIT = true;
     }).catch(function () {
-      console.log('Время на загрузку истекло, загрузка прервана');
+      html.classList.remove('base-fonts-loading');
+      html.classList.add('base-fonts-fail'); // не обязательно, сейчас не используется
+      console.log('Время на загрузку истекло, загрузка прервана. Убираем класс сокрытия');
     });
 
     // Таймер, прерывающий загрузку
@@ -64,9 +60,28 @@
 </head>
 <body>
 
-  @@include('_include/nav.html')
+  <nav class="main-nav">
+    <ul class="main-nav__list">
+      <li><a href="index_from-google.html">Подключение с fonts.google.com</a></li>
+      <li><a href="index_from-google_2.html">Подключение с fonts.google.com (опт. набор символов)</a></li>
+      <li><a href="index.html">@font-face</a></li>
+      <li><a href="index_font-display.html">@font-face с font-display</a></li>
+      <li><a href="index_preload.html">@font-face и Preload</a></li>
+      <li><a href="index_font-css.html">Шрифты в CSS (отдельный файл c WOFF)</a></li>
+      <li><a href="index_font-css2.html">Шрифты в CSS (отдельный файл c WOFF2)</a></li>
+      <li><a href="index_font-css_include.html">Шрифты в CSS вставлены в разметку</a></li>
+      <li><a href="index_font-base64-ls.html">Кеширование в LS</a></li>
+      <li><a href="index_webfontloader-local.html">Web Font Loader (локальные файлы шрифта)</a></li>
+      <li><a href="index_from-google_3.html">Web Font Loader (шрифты с fonts.google.com)</a></li>
+      <li><a href="index_font-face-observer.html">Font Face Observer (FOUT)</a></li>
+      <li><a href="index_font-face-observer-2.html">Font Face Observer (FOIT)</a></li>
+      <li><a href="index_font-loading-api.html">CSS Font Loading API</a></li>
+    </ul>
+    <a href="https://github.com/nicothin/workshop_fonts_icons">Репозиторий</a>, <a href="https://nicothin.github.io/workshop_fonts_icons/">демка на github</a>
+  </nav>
 
-  <p class="descr">Подключение c Font Face Observer (два базовых шрифта, совместная проверка, FOUT)</p>
+
+  <p class="descr">Подключение c Font Face Observer (два базовых шрифта, совместная проверка, FIOT)</p>
 
   <h1>Тестовый стенд</h1>
 
@@ -79,7 +94,63 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
   <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
 
-  @@include('_include/demo-table.html')
+  <p>!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~¨©«®´¸»ˆ˚˜ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяё–—…‹›€™</p>
+  <table class="demo-table">
+    <tr>
+      <th>Что</th>
+      <th>Как</th>
+    </tr>
+    <tr>
+      <td><span class="safe-text">light</span></td>
+      <td>
+        <span class="weight-300">Лёгкий текст. Light text.</span><br>
+        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">regular</span></td>
+      <td>
+        <span class="weight-400">Нормальный текст. Regular text.</span><br>
+        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">bold</span></td>
+      <td>
+        <span class="weight-700">Полужирный текст. Bold text.</span><br>
+        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
+      </td>
+    </tr>
+  </table>
+
+  <table class="demo-table  demo-table--serif">
+    <tr>
+      <th>Что</th>
+      <th>Как</th>
+    </tr>
+    <tr>
+      <td><span class="safe-text">light</span></td>
+      <td>
+        <span class="weight-300">Лёгкий текст. Light text.</span><br>
+        <span class="weight-300  italic">Лёгкий текст. Light text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">regular</span></td>
+      <td>
+        <span class="weight-400">Нормальный текст. Regular text.</span><br>
+        <span class="weight-400  italic">Нормальный текст. Regular text.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="safe-text">bold</span></td>
+      <td>
+        <span class="weight-700">Полужирный текст. Bold text.</span><br>
+        <span class="weight-700  italic">Полужирный текст. Bold text.</span>
+      </td>
+    </tr>
+  </table>
+
 
   <p>Снова мир всемогущая, языком великий заголовок запятой его власти, рыбного последний текст, текста безорфографичный обеспечивает оксмокс.</p>
   <p>Ratione voluptates praesentium, earum quisquam. Animi dolorum enim quidem quae fugiat porro voluptate dolorem repellat accusantium.</p>
