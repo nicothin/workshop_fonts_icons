@@ -50,7 +50,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('fonts:copy', function() {
-  return gulp.src(dirs.source + '/fonts/**/*.{woff,ttf,woff2}')
+  return gulp.src(dirs.source + '/fonts/**/*.{woff,ttf,woff2,eot,svg}')
     .pipe(gulp.dest(dirs.build + '/fonts/'))
     .pipe(browserSync.stream());
 });

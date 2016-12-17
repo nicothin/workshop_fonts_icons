@@ -3,47 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Font Loading API</title>
+  <title>Иконочный шрифт (Font Awesome целиком)</title>
 
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/font-face-only.css">
-  <link rel="stylesheet" href="css/font-fontfaceobserver.css">
-
-  <script>
-  (function() {
-
-    var html = document.documentElement;
-    html.className += " base-fonts-loading";
-
-    window.setTimeout(function() {
-      html.classList.remove('base-fonts-loading');
-      console.log('Таймер на случай неподгрузки/неподдержки истек. Убираем класс сокрытия');
-    }, 3000);
-
-    // CSS Font Loading API
-    Promise.all([
-      document.fonts.load("400 1em Rubik_kubik"),
-      document.fonts.load("700 1em Merriweather_circle")
-    ]).then(function () {
-      html.classList.remove('base-fonts-loading');
-      html.classList.add('base-fonts-loaded');
-      console.log('Базовые шрифты загружены: убираем класс сокрытия, добавляем класс загруженности и поднимаем флаг');
-    });
-
-  })();
-  </script>
+  <link rel="stylesheet" href="css/font-connect-beginner-style.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
 
 </head>
 <body>
 
   @@include('_include/nav.html')
 
-  <p class="descr">CSS Font Loading API (два базовых шрифта, совместная проверка, FOIT)</p>
+  <p class="descr">Иконочный шрифт (Font Awesome целиком)</p>
 
   <h1>Тестовый стенд</h1>
 
+  <p style="line-height:1.4; font-size: 16px;">
+    <a class="btn" href="http://fontawesome.io/examples/">
+      <i class="fa fa-calendar fa-1x"></i> calendar
+    </a>
+    <br>
+    <a href="http://fontawesome.io/examples/">
+      <i class="fa fa-calendar fa-1x"></i> calendar
+    </a>
+  </p>
 
-  <h2>Заголовок header</h2>
+  <style>
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-image: none;
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 4px;
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      text-decoration: none;
+    }
+    .btn .fa {
+      vertical-align: middle;
+    }
+  </style>
+
+  <p>
+    <i class="fa fa-camera-retro fa-lg"></i> fa-lg
+    <i class="fa fa-camera-retro fa-2x"></i> fa-2x
+    <i class="fa fa-camera-retro fa-3x"></i> fa-3x
+    <i class="fa fa-camera-retro fa-4x"></i> fa-4x
+    <i class="fa fa-camera-retro fa-5x"></i> fa-5x
+  </p>
+
+  <p>
+    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+
+    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+
+    <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </p>
+
+  <p>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-twitter fa-stack-1x"></i>
+    </span>
+    fa-twitter on fa-square-o<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-flag on fa-circle<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-terminal on fa-square<br>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-camera fa-stack-1x"></i>
+      <i class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></i>
+    </span>
+    fa-ban on fa-camera
+  </p>
 
   <img src="img/image.jpg" alt="" class="demo-image">
 
