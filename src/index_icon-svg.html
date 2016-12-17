@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG-иконки</title>
+
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/font-connect-beginner-style.css">
+
+  <script>
+    ;( function( window, document ) {
+      'use strict';
+
+      var file     = 'img/sprite-svg.svg', // URL файла относительно страницы, на которой он используется (можно — абсолютный)
+          revision = 1;                    // Номер ревизии (сменить при обновлении спрайта)
+
+      if( !document.createElementNS || !document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' ).createSVGRect ) {
+        return true;
+      }
+
+      var isLocalStorage = 'localStorage' in window && window[ 'localStorage' ] !== null,
+        request,
+        data,
+        insertIT = function() {
+          document.body.insertAdjacentHTML( 'afterbegin', data );
+        },
+        insert = function() {
+          if( document.body ) insertIT();
+          else document.addEventListener( 'DOMContentLoaded', insertIT );
+        };
+
+      if( isLocalStorage && localStorage.getItem( 'inlineSVGrev' ) == revision ) {
+        data = localStorage.getItem( 'inlineSVGdata' );
+        if( data ) {
+          insert();
+          return true;
+        }
+      }
+
+      try {
+        request = new XMLHttpRequest();
+        request.open( 'GET', file, true );
+        request.onload = function()
+        {
+          if( request.status >= 200 && request.status < 400 ) {
+            data = request.responseText;
+            insert();
+            if( isLocalStorage ) {
+              localStorage.setItem( 'inlineSVGdata',  data );
+              localStorage.setItem( 'inlineSVGrev',   revision );
+            }
+          }
+        }
+        request.send();
+      }
+      catch( e ){}
+
+    }( window, document ) );
+  </script>
+
+</head>
+<body>
+
+  @@include('_include/nav.html')
+
+  <p class="descr">SVG-иконки</p>
+
+  <h1>Тестовый стенд</h1>
+
+  <p>
+    <svg width="13" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
+    <svg width="26" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
+    <svg width="52" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar"></use></svg>
+    <svg width="14" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#check"></use></svg>
+    <svg width="28" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#check"></use></svg>
+    <svg width="56" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#check"></use></svg>
+    <svg width="14" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg>
+    <svg width="28" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg>
+    <svg width="56" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg>
+    <svg width="14" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-down"></use></svg>
+    <svg width="28" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-down"></use></svg>
+    <svg width="56" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-down"></use></svg>
+    <svg width="14" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-up"></use></svg>
+    <svg width="28" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-up"></use></svg>
+    <svg width="56" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-up"></use></svg>
+    <svg width="14" height="14"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#tourist"></use></svg>
+    <svg width="28" height="28"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#tourist"></use></svg>
+    <svg width="56" height="56"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#tourist"></use></svg>
+  </p>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="128" height="128">
+    <style>
+      .car:hover .car-main-color {
+        fill: #ff0;
+      }
+      .car:hover .car-circle {
+        fill: #f00;
+      }
+    </style>
+    <g class="car">
+      <path class="car-main-color" d="M503.172 322.207v-63.08c0-10.032-5.667-19.202-14.64-23.688l-38.325-19.17-57.368-71.71c-8.38-10.47-21.06-16.56-34.47-16.56H26.48c-9.75 0-17.654 7.9-17.654 17.65v180.97l494.344-4.416z" fill="#FFDC5A"/>
+      <path d="M8.828 304.552h494.345c4.875 0 8.828 3.953 8.828 8.828v17.655c0 4.875-3.95 8.828-8.82 8.828H8.83c-4.875 0-8.828-3.953-8.828-8.828V313.38c0-4.876 3.952-8.828 8.827-8.828z" fill="#FFC84B"/>
+      <circle cx="83.862" cy="335.448" r="40.46" fill="#EDEDEE"/>
+      <path class="car-circle" d="M83.862 384c-26.773 0-48.552-21.78-48.552-48.552 0-26.773 21.78-48.552 48.552-48.552s48.552 21.78 48.552 48.552c0 26.773-21.78 48.552-48.552 48.552zm0-79.448c-17.04 0-30.897 13.857-30.897 30.897s13.857 30.89 30.897 30.89 30.897-13.86 30.897-30.9-13.86-30.9-30.9-30.9z" fill="#504B5A"/>
+      <circle cx="83.862" cy="335.448" r="17.655" fill="#DCDBDE"/>
+      <circle cx="419.31" cy="335.448" r="40.46" fill="#EDEDEE"/>
+      <path class="car-circle" d="M419.305 384c-26.773 0-48.552-21.78-48.552-48.552 0-26.773 21.78-48.552 48.552-48.552 26.773 0 48.552 21.78 48.552 48.552 0 26.773-21.78 48.552-48.552 48.552zm0-79.448c-17.04 0-30.897 13.857-30.897 30.897s13.857 30.89 30.897 30.89 30.897-13.86 30.897-30.9-13.858-30.9-30.897-30.9z" fill="#504B5A"/>
+      <circle cx="419.31" cy="335.448" r="17.655" fill="#DCDBDE"/>
+      <path d="M393.71 145.655h-12.36c-4.363 0-6.855 4.983-4.236 8.474l41.313 55.08c3.335 4.44 8.567 7.06 14.124 7.06h17.66l-56.49-70.62zm-35.31 7.062l42.372 56.497c2.183 2.91.106 7.062-3.53 7.062h-97.104c-4.875 0-8.828-3.953-8.828-8.828v-52.966c0-4.875 3.953-8.828 8.828-8.828h44.138c5.557 0 10.79 2.617 14.124 7.063zm-314.262 63.56h220.69c4.875 0 8.828-3.954 8.828-8.83v-52.965c0-4.875-3.953-8.828-8.828-8.828H44.138c-4.875 0-8.828 3.953-8.828 8.828v52.966c0 4.875 3.953 8.828 8.828 8.828z" fill="#625D6B"/>
+      <path fill="#504B5A" d="M141.24 145.655h17.656v70.62H141.24z"/>
+      <path d="M450.207 260.414H26.483c-4.875 0-8.828-3.953-8.828-8.828s3.953-8.828 8.828-8.828h423.724c4.875 0 8.828 3.953 8.828 8.828s-3.953 8.828-8.828 8.828z" fill="#FFC84B"/>
+      <path d="M17.655 286.897H8.828v-61.793h8.828c4.875 0 8.828 3.953 8.828 8.828v44.138c0 4.874-3.954 8.827-8.83 8.827z" fill="#FF6464"/>
+      <path d="M476.69 251.586v8.828c0 4.875 3.953 8.828 8.828 8.828h17.655v-10.115c0-6.057-2.094-11.78-5.707-16.367h-11.948c-4.876 0-8.828 3.95-8.828 8.826z" fill="#EDEDEE"/>
+    </g>
+  </svg>
+
+  <style>
+    svg:nth-child(3n) {
+      fill: #ff0;
+    }
+    svg:hover {
+      fill: #f0f;
+    }
+  </style>
+
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+
+  @@include('_include/demo-table.html')
+
+  <p>Снова мир всемогущая, языком великий заголовок запятой его власти, рыбного последний текст, текста безорфографичный обеспечивает оксмокс.</p>
+  <p>Ratione voluptates praesentium, earum quisquam. Animi dolorum enim quidem quae fugiat porro voluptate dolorem repellat accusantium.</p>
+
+  <h2>Заголовок header</h2>
+
+  <img src="img/image.jpg" alt="" class="demo-image">
+
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+
+  <h2>Заголовок header</h2>
+
+  <img src="img/image.jpg" alt="" class="demo-image">
+
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+  <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Своего дал алфавит заманивший, переписали коварных.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, voluptatibus ut minus necessitatibus saepe laborum optio.</p>
+
+</body>
+</html>

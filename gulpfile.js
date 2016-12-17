@@ -62,13 +62,13 @@ gulp.task('css:copy', function() {
 });
 
 gulp.task('img:copy', function() {
-  return gulp.src(dirs.source + '/img/*.{jpg,png}')
+  return gulp.src(dirs.source + '/img/*.{jpg,png,svg}')
     .pipe(gulp.dest(dirs.build + '/img/'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('svgstore', function (callback) {
-  let spritePath = dirs.source + '/img/svg-sprite';
+  let spritePath = dirs.source + '/svg';
   if(fileExist(spritePath) !== false) {
     return gulp.src(spritePath + '/*.svg')
       .pipe(plumber({ errorHandler: onError }))
@@ -219,7 +219,7 @@ gulp.task('serve', gulp.series('build', function() {
   );
 
   gulp.watch(
-    dirs.source + '/img/svg-sprite/*.svg',
+    dirs.source + '/svg/*.svg',
     gulp.series('svgstore', 'html', reloader)
   );
 
